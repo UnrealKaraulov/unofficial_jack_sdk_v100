@@ -5,6 +5,8 @@
 
 #define SKIP_DEBUG_KEY VK_ESCAPE
 
+#define SHOW_DEBUG_SPAM_STUFF_KEY VK_F1
+
 #define IsKeyPressed(CODE) ((GetAsyncKeyState(CODE) & 0x8000) > 0)
 
 
@@ -66,17 +68,17 @@ struct JackAPI {
 	void (JACK_API* unknown_gl_setstate2)(__int64 a1, __int64 a2);
 	void (JACK_API* gl_line_width)(__int64 id, __int64 id2, float linesize);
 	void (JACK_API* gl_point_width)(__int64 id, __int64 id2, float pointsize);
-	__int64 (JACK_API* gl_set_option)(__int64 a1);
+	__int64 (JACK_API* gl_set_begin_option)(__int64 a1);
 	__int64(JACK_API* gl_update_color_part)(char r, char g, char b, char a);
 	void (JACK_API* gl_update_color_full)(unsigned int /*COLOR4*/* rgba);
 	void (JACK_API* set_int_pos)(__int64 pos[2]);
 	void (JACK_API* set_float_pos)(float x, float y);
 	void (JACK_API* set_float_x)(float x);
-	void  (JACK_API* unknown_add_something)(unsigned long* a1);
-	void (JACK_API* gl_update)(__int64 a1, __int64 a2);
+	void  (JACK_API* gl_push_vec3)(vec3 a1);
+	void (JACK_API* gl_update)(vec3 * points, unsigned char* unk_struct/* count ?*/);
 	__int64  (JACK_API* get_gl_state)();
 	void (JACK_API* unknown_gl_setstate)(__int64 a1, __int64 a2);
-	void (JACK_API* unknown_fill_something)(unsigned long* val);
+	void (JACK_API* unknown_set_something_mouse)(unsigned long* val);
 	float (JACK_API* unknown_product_from_vec)(vec3 a1);
 	float (JACK_API* unknown_get_float_value)();
 	bool (JACK_API* unknown_str_get1)(char* Destination, rsize_t SizeInBytes);
@@ -157,7 +159,7 @@ struct JackAPI {
 	void (JACK_API* unknown_recreate_something)(__int64 a1, unsigned __int64 a2, char* a3, unsigned __int64 a4, int* a5);
 	__int64 (JACK_API* unknown_get_something)(__int64 a1);
 	__int64 (JACK_API* unknown_create_something)(__int64 a1, __int64 a2);
-	__int64 (JACK_API* unknown_create_something2)(__int64 a1, __int64 a2, char* a3, __int64 a4, unsigned long* a5, unsigned long* a6, unsigned char* a7);
+	__int64 (JACK_API* unknown_create_something2)(__int64 a1, unsigned __int64 a2, __int64 a3, __int64 a4, unsigned long* a5, unsigned long* a6, unsigned char* a7);
 	void  (JACK_API* unknown_free_something3)(__int64 a1);
 	void (JACK_API* unknown_set_undo_levels)(__int64 a1, __int64 a2);
 	void  (JACK_API* unknown_fill_something2)(__int64 a1);
@@ -606,13 +608,13 @@ public:
 		return jack_sdk_api->gl_point_width(id, id2, pointsize);
 	}
 
-	static __int64 JACK_API gl_set_option(__int64 a1)
+	static __int64 JACK_API gl_set_begin_option(__int64 a1)
 	{
-		if (!IsKeyPressed(SKIP_DEBUG_KEY))
+		if (IsKeyPressed(SHOW_DEBUG_SPAM_STUFF_KEY))
 		{
 			jack_sdk_api->printLog("Function gl_set_option. A1: %d", a1);
 		}
-		return jack_sdk_api->gl_set_option(a1);
+		return jack_sdk_api->gl_set_begin_option(a1);
 	}
 
 	static __int64 JACK_API gl_update_color_part(char r, char g, char b, char a)
@@ -660,22 +662,22 @@ public:
 		return jack_sdk_api->set_float_x(x);
 	}
 
-	static void JACK_API unknown_add_something(unsigned long* a1)
+	static void JACK_API gl_push_vec3(vec3 point)
 	{
-		if (!IsKeyPressed(SKIP_DEBUG_KEY))
+		if (IsKeyPressed(SHOW_DEBUG_SPAM_STUFF_KEY))
 		{
-			jack_sdk_api->printLog("Function unknown_add_something. A1: %lu", *a1);
+			jack_sdk_api->printLog("Function gl_push_vec3. Vec: %.2f %.2f %.2f", point.x, point.x, point.z);
 		}
-		return jack_sdk_api->unknown_add_something(a1);
+		return jack_sdk_api->gl_push_vec3(point);
 	}
 
-	static void JACK_API gl_update(__int64 a1, __int64 a2)
+	static void JACK_API gl_update(vec3* points, unsigned char* unk_struct)
 	{
-		if (!IsKeyPressed(SKIP_DEBUG_KEY))
+		if (IsKeyPressed(SHOW_DEBUG_SPAM_STUFF_KEY))
 		{
-			jack_sdk_api->printLog("Function gl_update. Args: %lld, %lld", a1, a2);
+			jack_sdk_api->printLog("Function gl_update. Data: %p, %p", points, unk_struct);
 		}
-		return jack_sdk_api->gl_update(a1, a2);
+		return jack_sdk_api->gl_update(points, unk_struct);
 	}
 
 	static __int64 JACK_API get_gl_state()
@@ -696,18 +698,18 @@ public:
 		return jack_sdk_api->unknown_gl_setstate(a1, a2);
 	}
 
-	static void JACK_API unknown_fill_something(unsigned long* val)
+	static void JACK_API unknown_set_something_mouse(unsigned long* val)
 	{
-		if (!IsKeyPressed(SKIP_DEBUG_KEY))
+		if (IsKeyPressed(SHOW_DEBUG_SPAM_STUFF_KEY))
 		{
-			jack_sdk_api->printLog("Function unknown_fill_something. Val: %lu", *val);
+			jack_sdk_api->printLog("Function unknown_set_something_mouse. Val: %lu", *val);
 		}
-		return jack_sdk_api->unknown_fill_something(val);
+		return jack_sdk_api->unknown_set_something_mouse(val);
 	}
 
 	static float JACK_API unknown_product_from_vec(vec3 a1)
 	{
-		if (!IsKeyPressed(SKIP_DEBUG_KEY))
+		if (IsKeyPressed(SHOW_DEBUG_SPAM_STUFF_KEY))
 		{
 			jack_sdk_api->printLog("Function unknown_product_from_vec.");
 		}
@@ -754,7 +756,7 @@ public:
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
-			jack_sdk_api->printLog("Function unknown_same_value. Val: %s", val);
+			jack_sdk_api->printLog("Function unknown_convert_string. Val: %s", val);
 		}
 		return jack_sdk_api->unknown_same_string(val);
 	}
@@ -1425,11 +1427,11 @@ public:
 		return jack_sdk_api->unknown_create_something(a1, a2);
 	}
 
-	static __int64 JACK_API unknown_create_something2(__int64 a1, __int64 a2, char* a3, __int64 a4, unsigned long* a5, unsigned long* a6, unsigned char* a7)
+	static __int64 JACK_API unknown_create_something2(__int64 a1, unsigned __int64 a2, __int64 a3, __int64 a4, unsigned long* a5, unsigned long* a6, unsigned char* a7)
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
-			jack_sdk_api->printLog("Function unknown_create_something2. A1: %lld, A2: %d, A3: %s, A4: %d", a1, a2, a3, a4);
+			jack_sdk_api->printLog("Function unknown_create_something2. A1: %lld, A2: %llu, A3: %lld, A4: %d, A5: %p, A6: %p, A7: %p", a1, a2, a3, a4, a5, a6, a7);
 		}
 		return jack_sdk_api->unknown_create_something2(a1, a2, a3, a4, a5, a6, a7);
 	}
@@ -2037,17 +2039,17 @@ __int64 __fastcall vpMain(JackAPI* vTable, __int64 sdk_version)
 	vTable->unknown_gl_setstate2 = *HookJackAPI::unknown_gl_setstate2;
 	vTable->gl_line_width = *HookJackAPI::gl_line_width;
 	vTable->gl_point_width = *HookJackAPI::gl_point_width;
-	vTable->gl_set_option = *HookJackAPI::gl_set_option;
+	vTable->gl_set_begin_option = *HookJackAPI::gl_set_begin_option;
 	vTable->gl_update_color_part = *HookJackAPI::gl_update_color_part;
 	vTable->gl_update_color_full = *HookJackAPI::gl_update_color_full;
 	vTable->set_int_pos = *HookJackAPI::set_int_pos;
 	vTable->set_float_pos = *HookJackAPI::set_float_pos;
 	vTable->set_float_x = *HookJackAPI::set_float_x;
-	vTable->unknown_add_something = *HookJackAPI::unknown_add_something;
+	vTable->gl_push_vec3 = *HookJackAPI::gl_push_vec3;
 	vTable->gl_update = *HookJackAPI::gl_update;
 	vTable->get_gl_state = *HookJackAPI::get_gl_state;
 	vTable->unknown_gl_setstate = *HookJackAPI::unknown_gl_setstate;
-	vTable->unknown_fill_something = *HookJackAPI::unknown_fill_something;
+	vTable->unknown_set_something_mouse = *HookJackAPI::unknown_set_something_mouse;
 	vTable->unknown_product_from_vec = *HookJackAPI::unknown_product_from_vec;
 	vTable->unknown_get_float_value = *HookJackAPI::unknown_get_float_value;
 	vTable->unknown_str_get1 = *HookJackAPI::unknown_str_get1;
@@ -2124,11 +2126,11 @@ __int64 __fastcall vpMain(JackAPI* vTable, __int64 sdk_version)
 	vTable->qapp_process_event = *HookJackAPI::qapp_process_event;
 	vTable->alloc_current_widget_2 = *HookJackAPI::alloc_current_widget_2;
 
-	vTable->widget_clear_textures = *HookJackAPI::widget_clear_textures;
+	/*vTable->widget_clear_textures = *HookJackAPI::widget_clear_textures;
 	vTable->unknown_do_something_color = *HookJackAPI::unknown_do_something_color;
 	vTable->unknown_free_something2 = *HookJackAPI::unknown_free_something2;
 	vTable->unknown_recreate_something = *HookJackAPI::unknown_recreate_something;
-	vTable->unknown_get_something = *HookJackAPI::unknown_get_something;
+	vTable->unknown_get_something = *HookJackAPI::unknown_get_something;*/
 	vTable->unknown_create_something = *HookJackAPI::unknown_create_something;
 	vTable->unknown_create_something2 = *HookJackAPI::unknown_create_something2;
 	vTable->unknown_free_something3 = *HookJackAPI::unknown_free_something3;
