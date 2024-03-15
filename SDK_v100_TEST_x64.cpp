@@ -71,9 +71,9 @@ struct JackAPI {
 	__int64 (JACK_API* gl_set_begin_option)(__int64 a1);
 	__int64(JACK_API* gl_update_color_part)(char r, char g, char b, char a);
 	void (JACK_API* gl_update_color_full)(unsigned int /*COLOR4*/* rgba);
-	void (JACK_API* set_int_pos)(__int64 pos[2]);
-	void (JACK_API* set_float_pos)(float x, float y);
-	void (JACK_API* set_float_x)(float x);
+	void (JACK_API* gl_set_int_pos)(__int64 pos[2]);
+	void (JACK_API* gl_set_float_pos)(float x, float y);
+	void (JACK_API* gl_set_float_xy)(float xy[2]);
 	void  (JACK_API* gl_push_vec3)(vec3 a1);
 	void (JACK_API* gl_update)(vec3 * points, unsigned char* unk_struct/* count ?*/);
 	__int64  (JACK_API* get_gl_state)();
@@ -574,7 +574,7 @@ public:
 
 	static void JACK_API unknown_gl_setstate3(__int64 a1, __int64 a2)
 	{
-		if (!IsKeyPressed(SKIP_DEBUG_KEY))
+		if (IsKeyPressed(SHOW_DEBUG_SPAM_STUFF_KEY))
 		{
 			jack_sdk_api->printLog("Function unknown_gl_setstate3. Args: %lld, %lld", a1, a2);
 		}
@@ -583,7 +583,7 @@ public:
 
 	static void JACK_API unknown_gl_setstate2(__int64 a1, __int64 a2)
 	{
-		if (!IsKeyPressed(SKIP_DEBUG_KEY))
+		if (IsKeyPressed(SHOW_DEBUG_SPAM_STUFF_KEY))
 		{
 			jack_sdk_api->printLog("Function unknown_gl_setstate2. Args: %lld, %lld", a1, a2);
 		}
@@ -619,7 +619,7 @@ public:
 
 	static __int64 JACK_API gl_update_color_part(char r, char g, char b, char a)
 	{
-		if (!IsKeyPressed(SKIP_DEBUG_KEY))
+		if (IsKeyPressed(SHOW_DEBUG_SPAM_STUFF_KEY))
 		{
 			jack_sdk_api->printLog("Function gl_update_color_part. R: %d, G: %d, B: %d, A: %d", r, g, b, a);
 		}
@@ -628,38 +628,38 @@ public:
 
 	static void JACK_API gl_update_color_full(unsigned int* rgba)
 	{
-		if (!IsKeyPressed(SKIP_DEBUG_KEY))
+		if (IsKeyPressed(SHOW_DEBUG_SPAM_STUFF_KEY))
 		{
 			jack_sdk_api->printLog("Function gl_update_color_full.");
 		}
 		return jack_sdk_api->gl_update_color_full(rgba);
 	}
 
-	static void JACK_API set_int_pos(__int64 pos[2])
+	static void JACK_API gl_set_int_pos(__int64 pos[2])
 	{
-		if (!IsKeyPressed(SKIP_DEBUG_KEY))
+		if (IsKeyPressed(SHOW_DEBUG_SPAM_STUFF_KEY))
 		{
-			jack_sdk_api->printLog("Function set_int_pos. Pos: %lld, %lld", pos[0], pos[1]);
+			jack_sdk_api->printLog("Function gl_set_int_pos. Pos: %lld, %lld", pos[0], pos[1]);
 		}
-		return jack_sdk_api->set_int_pos(pos);
+		return jack_sdk_api->gl_set_int_pos(pos);
 	}
 
-	static void JACK_API set_float_pos(float x, float y)
+	static void JACK_API gl_set_float_pos(float x, float y)
 	{
-		if (!IsKeyPressed(SKIP_DEBUG_KEY))
+		if (IsKeyPressed(SHOW_DEBUG_SPAM_STUFF_KEY))
 		{
-			jack_sdk_api->printLog("Function set_float_pos. X: %f, Y: %f", x, y);
+			jack_sdk_api->printLog("Function gl_set_float_pos. X: %f, Y: %f", x, y);
 		}
-		return jack_sdk_api->set_float_pos(x, y);
+		return jack_sdk_api->gl_set_float_pos(x, y);
 	}
 
-	static void JACK_API set_float_x(float x)
+	static void JACK_API gl_set_float_xy(float xy[2])
 	{
-		if (!IsKeyPressed(SKIP_DEBUG_KEY))
+		if (IsKeyPressed(SHOW_DEBUG_SPAM_STUFF_KEY))
 		{
-			jack_sdk_api->printLog("Function set_float_x. X: %f", x);
+			jack_sdk_api->printLog("Function gl_set_float_xy. X: %f", xy[0]);
 		}
-		return jack_sdk_api->set_float_x(x);
+		return jack_sdk_api->gl_set_float_xy(xy);
 	}
 
 	static void JACK_API gl_push_vec3(vec3 point)
@@ -2042,9 +2042,9 @@ __int64 __fastcall vpMain(JackAPI* vTable, __int64 sdk_version)
 	vTable->gl_set_begin_option = *HookJackAPI::gl_set_begin_option;
 	vTable->gl_update_color_part = *HookJackAPI::gl_update_color_part;
 	vTable->gl_update_color_full = *HookJackAPI::gl_update_color_full;
-	vTable->set_int_pos = *HookJackAPI::set_int_pos;
-	vTable->set_float_pos = *HookJackAPI::set_float_pos;
-	vTable->set_float_x = *HookJackAPI::set_float_x;
+	vTable->gl_set_int_pos = *HookJackAPI::gl_set_int_pos;
+	vTable->gl_set_float_pos = *HookJackAPI::gl_set_float_pos;
+	vTable->gl_set_float_xy = *HookJackAPI::gl_set_float_xy;
 	vTable->gl_push_vec3 = *HookJackAPI::gl_push_vec3;
 	vTable->gl_update = *HookJackAPI::gl_update;
 	vTable->get_gl_state = *HookJackAPI::get_gl_state;
