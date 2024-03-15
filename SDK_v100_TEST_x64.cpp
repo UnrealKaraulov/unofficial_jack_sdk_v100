@@ -31,16 +31,16 @@ struct JackAPI {
 	void (JACK_API* printError)(const char* Format, ...);
 	void (JACK_API* free_mem_block)(void* Block);
 	void* (JACK_API* alloc_mem_block)(size_t Size);
-	void* (JACK_API* alloc_mem_in_tempbuf)(unsigned int bufid/*0-4*/, size_t Size);
+	void* (JACK_API* alloc_mem_in_tempbuf)(unsigned __int64 bufid/*0-4*/, size_t Size);
 	char* (JACK_API* alloc_char_mem_block)(const char* str);
 	float (JACK_API* get_elapsed_sec)();
-	void (JACK_API* set_option_val)(unsigned int option/*0-5*/, unsigned int val);
-	__int64 (JACK_API* get_option_val)(unsigned int option/*0-5*/);
-	__int64 (JACK_API* unknown_steamapi)(unsigned int arg1, __int64 arg2, __int64 arg3, __int64 arg4);
+	void (JACK_API* set_option_val)(unsigned __int64 option/*0-5*/, unsigned __int64 val);
+	__int64 (JACK_API* get_option_val)(unsigned __int64 option/*0-5*/);
+	__int64 (JACK_API* unknown_steamapi)(unsigned __int64 arg1, __int64 arg2, __int64 arg3, __int64 arg4);
 	char* (JACK_API* get_last_fgd_key_type)();
 	__int64 (JACK_API* get_last_fgd_key_line)();
-	bool (JACK_API* load_fgd_file)(char* path, unsigned int flags);
-	char (JACK_API* unknown_fill_memorybuffer)(__int64 a1, int a2, int a3);
+	bool (JACK_API* load_fgd_file)(char* path, unsigned __int64 flags);
+	char (JACK_API* unknown_fill_memorybuffer)(__int64 a1, __int64 a2, __int64 a3);
 	__int64 (JACK_API* is_fgd_parse_error)();
 	void (JACK_API* print_fgd_parse_error)(const char* Format, ...);
 	void (JACK_API* clear_fgd_parse_error)();
@@ -50,13 +50,13 @@ struct JackAPI {
 	void (JACK_API* unknown_set_byte)();
 	void (JACK_API* check_latest_fgd_token)(const char* tok);
 	bool (JACK_API* check_bad_token)(const char* tok, bool load_type);
-	void (JACK_API* check_float_values_array_array)(unsigned int  values_num, unsigned int value_size, int a2, float** values);
-	void (JACK_API* check_float_values_array)(unsigned int values_num, int a2, float** values);
-	void (JACK_API* check_float_values)(int values_num, float* values);
+	void (JACK_API* check_float_values_array_array)(unsigned __int64  values_num, unsigned __int64 value_size, __int64 a2, float** values);
+	void (JACK_API* check_float_values_array)(unsigned __int64 values_num, __int64 a2, float** values);
+	void (JACK_API* check_float_values)(__int64 values_num, float* values);
 	bool (JACK_API* check_for_errors2)();
 	void (JACK_API* unknown_unload_fgd)();
-	__int64 (JACK_API* unknown_get_fgd_count_val)(int val);
-	__int64 (JACK_API* unknown_set_fgd_count_val)(int val);
+	__int64 (JACK_API* unknown_get_fgd_count_val)(__int64 val);
+	__int64 (JACK_API* unknown_set_fgd_count_val)(__int64 val);
 	bool  (JACK_API* unknown_check_valid_str)(const char* a1);
 	char* (JACK_API* unknown_get_fgd_string)();
 	void (JACK_API* unknown_clear_fgd_something)();
@@ -66,7 +66,7 @@ struct JackAPI {
 	void (JACK_API* unknown_gl_setstate2)(__int64 a1, __int64 a2);
 	void (JACK_API* gl_line_width)(__int64 id, __int64 id2, float linesize);
 	void (JACK_API* gl_point_width)(__int64 id, __int64 id2, float pointsize);
-	__int64 (JACK_API* gl_set_option)(int a1);
+	__int64 (JACK_API* gl_set_option)(__int64 a1);
 	__int64(JACK_API* gl_update_color_part)(char r, char g, char b, char a);
 	void (JACK_API* gl_update_color_full)(unsigned int /*COLOR4*/* rgba);
 	void (JACK_API* set_int_pos)(__int64 pos[2]);
@@ -86,20 +86,20 @@ struct JackAPI {
 	bool (JACK_API* is_file_exists)(char* FileName);
 	unsigned char* (JACK_API* read_file)(char* FileName, size_t* size);
 	bool (JACK_API* create_dir)(char* Path);
-	void (JACK_API* zero_is_small_float_array)(int size, float* v);
+	void (JACK_API* zero_is_small_float_array)(__int64 size, float* v);
 	void (JACK_API* zero_is_small_vec)(vec3* v);
 	void (JACK_API* clamp_to_map)(vec3* v);
 	void (JACK_API* snap_to_grid)(vec3* v);
 	char* (JACK_API* get_jack_version)();
 	float (JACK_API* get_grid_size)();
 	bool(JACK_API* unknown_qt_func1)(void* qobj1, void* q_unused, void* qobj2, void* qevnt);
-	__int64 (JACK_API* unknown_do_something)(void* some_struct, char** outstr, char fill_char, int need_fill_or_not);
-	__int64 (JACK_API* unknown_list_create_some_object)(void* some_struct, const char* name, int* iarray, int flags);
+	__int64 (JACK_API* unknown_do_something)(void* some_struct, char** outstr, char fill_char, __int64 need_fill_or_not);
+	__int64 (JACK_API* unknown_list_create_some_object)(void* some_struct, const char* name, int* iarray, __int64 flags);
 	__int64 (JACK_API* unknown_list_do_something)(__int64 arg1, __int16 flags, double arg3, double arg4);
 	__int64 (JACK_API* unknown_list_swap_something2)(__int64 arg1, unsigned char* arg_array);
 	__int64 (JACK_API* unknown_list_swap_something)(__int64 arg1, unsigned long* arg_array);
-	void (JACK_API* unknown_list_add_something)(__int64 arg1, __int64 arg2, unsigned int arg3);
-	void (JACK_API* unknown_list_add_something2)(__int64 arg1, __int64 arg2, unsigned int arg3);
+	void (JACK_API* unknown_list_add_something)(__int64 arg1, __int64 arg2, unsigned __int64 arg3);
+	void (JACK_API* unknown_list_add_something2)(__int64 arg1, __int64 arg2, unsigned __int64 arg3);
 	__int64 (JACK_API* unknown_list_get_at)(void* arg1, __int64 offset);
 	__int64 (JACK_API* unknown_list_get_size)(void* arg1);
 	__int64 (JACK_API* unknown_list_get_by_name)(void* arg1, const char* name, __int64 offset);
@@ -109,13 +109,13 @@ struct JackAPI {
 	__int64 (JACK_API* unknown_list_do_something2)(__int64 arg1, __int64 arg2);
 	void (JACK_API* unknown_get_color_or_something)(__int64 a1, unsigned char* a2);
 	void (JACK_API* unknown_something_color)(__int64 a1, unsigned long* a2);
-	void (JACK_API* unknown_list_add_something3)(__int64 arg1, __int64 arg2, unsigned int arg3);
-	void (JACK_API* unknown_list_add_something4)(__int64 arg1, __int64 arg2, unsigned int arg3);
+	void (JACK_API* unknown_list_add_something3)(__int64 arg1, __int64 arg2, unsigned __int64 arg3);
+	void (JACK_API* unknown_list_add_something4)(__int64 arg1, __int64 arg2, unsigned __int64 arg3);
 	__int64 (JACK_API* unknown_list_get_at2)(void* arg1, __int64 offset);
 	__int64 (JACK_API* unknown_list_get_size2)(void* arg1);
-	__int64 (JACK_API* unknown_list_do_something3)(__int64 a1, __int64 a2, __int64 a3, int a4);
+	__int64 (JACK_API* unknown_list_do_something3)(__int64 a1, __int64 a2, __int64 a3, __int64 a4);
 	__int64(JACK_API* unknown_list_do_something4)(__int64 a1, __int64 a2);
-	__int64 (JACK_API* unknown_list_do_something_uppercase)(__int64 a1, __int64 a2, int a3, int a4);
+	__int64 (JACK_API* unknown_list_do_something_uppercase)(__int64 a1, __int64 a2, __int64 a3, __int64 a4);
 	__int64 (JACK_API* unknown_call_something)(__int64 a1);
 	__int64 (JACK_API* unknown_list_do_something_angles)(__int64 a1);
 	__int64 (JACK_API* unknown_list_do_something_float)(__int64 a1, float* a2);
@@ -140,7 +140,7 @@ struct JackAPI {
 	void (JACK_API* unknown_get_color_or_something2)(__int64 a1, unsigned char* a2);
 	__int64 (JACK_API* unknown_call_something_color3)(__int64 a1, unsigned long* a2);
 	void (JACK_API* unknown_do_something_float)(__int64 a1, unsigned int* a2, unsigned int* a3);
-	void* (JACK_API* unknown_do_something_hashtable)(const char* a1, const char* a2, int a3);
+	void* (JACK_API* unknown_do_something_hashtable)(const char* a1, const char* a2, __int64 a3);
 	void* (JACK_API* unknown_find_hastable)(const char* a1);
 	void (JACK_API* unknown_mark_something_hashable)(__int64 a1);
 	void (JACK_API* unknown_alloc_something)(__int64 a1, void* a2);
@@ -149,15 +149,15 @@ struct JackAPI {
 	__int64 (JACK_API* unknown_do_something_hashtable2)(__int64 a1, const char* a2);
 	__int64 (JACK_API* alloc_current_widget_1)();
 	__int64 (JACK_API* unknown_do_something_qt_witdget2)(__int64 a1, __int64 a2);
-	unsigned long* (JACK_API* qapp_process_event)(__int64 a1, const char* a2, int a3, int a4, int a5, int a6, int a7, char a8, void* a9);
+	unsigned long* (JACK_API* qapp_process_event)(__int64 a1, const char* a2, __int64 a3, __int64 a4, __int64 a5, __int64 a6, __int64 a7, char a8, void* a9);
 	__int64 (JACK_API* alloc_current_widget_2)(__int64 a1, __int64 a2, __int64 a3);
 	void  (JACK_API* widget_clear_textures)(__int64 a1, void* a2);
 	__int64  (JACK_API* unknown_do_something_color)(__int64 a1, char* a2);
-	void (JACK_API* unknown_free_something2)(__int64 a1, unsigned int a2);
-	void (JACK_API* unknown_recreate_something)(__int64 a1, unsigned int a2, char* a3, unsigned int a4, int* a5);
+	void (JACK_API* unknown_free_something2)(__int64 a1, unsigned __int64 a2);
+	void (JACK_API* unknown_recreate_something)(__int64 a1, unsigned __int64 a2, char* a3, unsigned __int64 a4, int* a5);
 	__int64 (JACK_API* unknown_get_something)(__int64 a1);
-	__int64 (JACK_API* unknown_create_something)(__int64 a1, int a2);
-	__int64 (JACK_API* unknown_create_something2)(__int64 a1, int a2, char* a3, int a4, unsigned long* a5, unsigned long* a6, unsigned char* a7);
+	__int64 (JACK_API* unknown_create_something)(__int64 a1, __int64 a2);
+	__int64 (JACK_API* unknown_create_something2)(__int64 a1, __int64 a2, char* a3, __int64 a4, unsigned long* a5, unsigned long* a6, unsigned char* a7);
 	void  (JACK_API* unknown_free_something3)(__int64 a1);
 	void (JACK_API* unknown_set_undo_levels)(__int64 a1, __int64 a2);
 	void  (JACK_API* unknown_fill_something2)(__int64 a1);
@@ -170,7 +170,7 @@ struct JackAPI {
 	void  (JACK_API* unknown_fill_something8)(__int64 a1);
 	void  (JACK_API* unknown_fill_something9)(__int64 a1);
 	void  (JACK_API* unknown_fill_something5)(__int64 a1);
-	void (JACK_API* unknown_show_something2)(__int64 a1, int a2);
+	void (JACK_API* unknown_show_something2)(__int64 a1, __int64 a2);
 	void  (JACK_API* unknown_fill_something11)(__int64 a1);
 	void  (JACK_API* unknown_fill_something12)(__int64 a1);
 	void  (JACK_API* unknown_fill_something13)(__int64 a1);
@@ -182,25 +182,25 @@ struct JackAPI {
 	void  (JACK_API* unknown_fill_something17)(__int64 a1);
 	void  (JACK_API* unknown_fill_something20)(__int64 a1);
 	void  (JACK_API* unknown_fill_something19)(__int64 a1);
-	void (JACK_API* unknown_show_something3)(__int64 a1, int a2);
+	void (JACK_API* unknown_show_something3)(__int64 a1, __int64 a2);
 	void  (JACK_API* unknown_fill_something22)(__int64 a1);
 	void  (JACK_API* unknown_fill_something21)(__int64 a1);
-	__int64 (JACK_API* show_dialog_with_options)(const char* title, const char* message, const char* options, int flags);
+	__int64 (JACK_API* show_dialog_with_options)(const char* title, const char* message, const char* options, __int64 flags);
 	bool (JACK_API* show_dialog)(const char* title, const char* message, unsigned char flags);
 	void  (JACK_API* set_dialog_add_title)(const char* title);
-	void  (JACK_API* set_dialog_add_button)(const char* name, __int64 add);
-	void  (JACK_API* set_dialog_add_button_2)(const char* name, __int64 add);
-	void (JACK_API* set_progress_bar)(int val, int max);
-	void  (JACK_API* add_dialog_editable_text)(__int64 a1, const char* row, const char* direct_text, int flags);
-	void (JACK_API* add_dialog_radiobox_text)(__int64 a1, const char* tile, bool checked, int flags);
-	void  (JACK_API* add_dialog_checkbox_text)(__int64 a1, const char* tile, bool checked, int flags);
-	void (JACK_API* add_dialog_spinbox_text_int)(__int64 a1, const char* text, int value, int min, int max, int step, int flags);
-	void (JACK_API* add_dialog_spinbox_text_float)(__int64 a1, const char* text, float value, float min, float max, float step, int flags);
-	void (JACK_API* add_dialog_fileedit_text)(__int64 a1, const char* a2, const char* a3, const char* a4, int a5);
-	void (JACK_API* add_dialog_filelist_text)(__int64 a1, const char* a2, const char* a3, const char* a4, int a5);
-	void (JACK_API* add_dialog_combobox_text)(__int64 a1, const char* a2, int a3, const char* a4, int a5);
-	void (JACK_API* add_dialog_directory_text)(__int64 a1, const char* a2, const char* a3, int a4);
-	void (JACK_API* add_dialog_query_arg_str)(const char* text, char* out, int out_size);
+	void  (JACK_API* set_dialog_add_button)(const char* name, void* dispatch_func);
+	void  (JACK_API* set_dialog_add_button_2)(const char* name, void* dispatch_func);
+	void (JACK_API* set_progress_bar)(__int64 val, __int64 max);
+	void  (JACK_API* add_dialog_editable_text)(const char* category, const char* row, const char* direct_text, __int64 flags);
+	void (JACK_API* add_dialog_radiobox_text)(const char* category, const char* tile, bool checked, __int64 flags);
+	void  (JACK_API* add_dialog_checkbox_text)(const char* category, const char* tile, bool checked, __int64 flags);
+	void (JACK_API* add_dialog_spinbox_text_int)(const char* category, const char* text, __int64 value, __int64 min, __int64 max, __int64 step, __int64 flags);
+	void (JACK_API* add_dialog_spinbox_text_float)(const char* category, const char* text, float value, float min, float max, float step, __int64 flags);
+	void (JACK_API* add_dialog_fileedit_text)(const char* category, const char* a2, const char* a3, const char* a4, __int64 a5);
+	void (JACK_API* add_dialog_filelist_text)(const char* category, const char* a2, const char* a3, const char* a4, __int64 a5);
+	void (JACK_API* add_dialog_combobox_text)(const char* category, const char* a2, __int64 a3, const char* a4, __int64 a5);
+	void (JACK_API* add_dialog_directory_text)(const char* category, const char* a2, const char* a3, __int64 a4);
+	void (JACK_API* add_dialog_query_arg_str)(const char* text, char* out, __int64 out_size);
 	float (JACK_API* add_dialog_query_arg_float)(const char* a1);
 	__int64 (JACK_API* add_dialog_query_arg_int)(const char* a1);
 	void(JACK_API* end_dialog)(__int64 a1);
@@ -289,7 +289,7 @@ public:
 		return jack_sdk_api->alloc_mem_block(Size);
 	}
 
-	static void* JACK_API alloc_mem_in_tempbuf(unsigned int bufid, size_t Size)
+	static void* JACK_API alloc_mem_in_tempbuf(unsigned __int64 bufid, size_t Size)
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
@@ -316,7 +316,7 @@ public:
 		return jack_sdk_api->get_elapsed_sec();
 	}
 
-	static void JACK_API set_option_val(unsigned int option, unsigned int val)
+	static void JACK_API set_option_val(unsigned __int64 option, unsigned __int64 val)
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY)) 
 		{
@@ -325,7 +325,7 @@ public:
 		return jack_sdk_api->set_option_val(option, val);
 	}
 
-	static __int64 JACK_API get_option_val(unsigned int option)
+	static __int64 JACK_API get_option_val(unsigned __int64 option)
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
@@ -334,7 +334,7 @@ public:
 		return jack_sdk_api->get_option_val(option);
 	}
 
-	static __int64 JACK_API unknown_steamapi(unsigned int arg1, __int64 arg2, __int64 arg3, __int64 arg4)
+	static __int64 JACK_API unknown_steamapi(unsigned __int64 arg1, __int64 arg2, __int64 arg3, __int64 arg4)
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
@@ -361,7 +361,7 @@ public:
 		return jack_sdk_api->get_last_fgd_key_line();
 	}
 
-	static bool JACK_API load_fgd_file(char* path, unsigned int flags)
+	static bool JACK_API load_fgd_file(char* path, unsigned __int64 flags)
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
@@ -370,7 +370,7 @@ public:
 		return jack_sdk_api->load_fgd_file(path, flags);
 	}
 
-	static char JACK_API unknown_fill_memorybuffer(__int64 a1, int a2, int a3)
+	static char JACK_API unknown_fill_memorybuffer(__int64 a1, __int64 a2, __int64 a3)
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
@@ -462,7 +462,7 @@ public:
 		return jack_sdk_api->check_bad_token(tok, load_type);
 	}
 
-	static void JACK_API check_float_values_array_array(unsigned int values_num, unsigned int value_size, int a2, float** values)
+	static void JACK_API check_float_values_array_array(unsigned __int64 values_num, unsigned __int64 value_size, __int64 a2, float** values)
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
@@ -471,7 +471,7 @@ public:
 		return jack_sdk_api->check_float_values_array_array(values_num, value_size, a2, values);
 	}
 
-	static void JACK_API check_float_values_array(unsigned int values_num, int a2, float** values)
+	static void JACK_API check_float_values_array(unsigned __int64 values_num, __int64 a2, float** values)
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY)) 
 		{
@@ -480,7 +480,7 @@ public:
 		return jack_sdk_api->check_float_values_array(values_num, a2, values);
 	}
 
-	static void JACK_API check_float_values(int values_num, float* values)
+	static void JACK_API check_float_values(__int64 values_num, float* values)
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
@@ -507,7 +507,7 @@ public:
 		return jack_sdk_api->unknown_unload_fgd();
 	}
 
-	static __int64 JACK_API unknown_get_fgd_count_val(int val)
+	static __int64 JACK_API unknown_get_fgd_count_val(__int64 val)
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
@@ -516,7 +516,7 @@ public:
 		return jack_sdk_api->unknown_get_fgd_count_val(val);
 	}
 
-	static __int64 JACK_API unknown_set_fgd_count_val(int val)
+	static __int64 JACK_API unknown_set_fgd_count_val(__int64 val)
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
@@ -606,7 +606,7 @@ public:
 		return jack_sdk_api->gl_point_width(id, id2, pointsize);
 	}
 
-	static __int64 JACK_API gl_set_option(int a1)
+	static __int64 JACK_API gl_set_option(__int64 a1)
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
@@ -786,7 +786,7 @@ public:
 		return jack_sdk_api->create_dir(Path);
 	}
 
-	static void JACK_API zero_is_small_float_array(int size, float* v)
+	static void JACK_API zero_is_small_float_array(__int64 size, float* v)
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
@@ -849,7 +849,7 @@ public:
 		return jack_sdk_api->unknown_qt_func1(qobj1, q_unused, qobj2, qevnt);
 	}
 
-	static __int64 JACK_API unknown_do_something(void* some_struct, char** outstr, char fill_char, int need_fill_or_not)
+	static __int64 JACK_API unknown_do_something(void* some_struct, char** outstr, char fill_char, __int64 need_fill_or_not)
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
@@ -858,7 +858,7 @@ public:
 		return jack_sdk_api->unknown_do_something(some_struct, outstr, fill_char, need_fill_or_not);
 	}
 
-	static __int64 JACK_API unknown_list_create_some_object(void* some_struct, const char* name, int* iarray, int flags)
+	static __int64 JACK_API unknown_list_create_some_object(void* some_struct, const char* name, int* iarray, __int64 flags)
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
@@ -894,7 +894,7 @@ public:
 		return jack_sdk_api->unknown_list_swap_something(arg1, arg_array);
 	}
 
-	static void JACK_API unknown_list_add_something(__int64 arg1, __int64 arg2, unsigned int arg3)
+	static void JACK_API unknown_list_add_something(__int64 arg1, __int64 arg2, unsigned __int64 arg3)
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
@@ -903,7 +903,7 @@ public:
 		return jack_sdk_api->unknown_list_add_something(arg1, arg2, arg3);
 	}
 
-	static void JACK_API unknown_list_add_something2(__int64 arg1, __int64 arg2, unsigned int arg3)
+	static void JACK_API unknown_list_add_something2(__int64 arg1, __int64 arg2, unsigned __int64 arg3)
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
@@ -993,7 +993,7 @@ public:
 		return jack_sdk_api->unknown_something_color(a1, a2);
 	}
 
-	static void JACK_API unknown_list_add_something3(__int64 arg1, __int64 arg2, unsigned int arg3)
+	static void JACK_API unknown_list_add_something3(__int64 arg1, __int64 arg2, unsigned __int64 arg3)
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
@@ -1002,7 +1002,7 @@ public:
 		return jack_sdk_api->unknown_list_add_something3(arg1, arg2, arg3);
 	}
 
-	static void JACK_API unknown_list_add_something4(__int64 arg1, __int64 arg2, unsigned int arg3)
+	static void JACK_API unknown_list_add_something4(__int64 arg1, __int64 arg2, unsigned __int64 arg3)
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
@@ -1029,7 +1029,7 @@ public:
 		return jack_sdk_api->unknown_list_get_size2(arg1);
 	}
 
-	static __int64 JACK_API unknown_list_do_something3(__int64 a1, __int64 a2, __int64 a3, int a4)
+	static __int64 JACK_API unknown_list_do_something3(__int64 a1, __int64 a2, __int64 a3, __int64 a4)
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
@@ -1047,7 +1047,7 @@ public:
 		return jack_sdk_api->unknown_list_do_something4(a1, a2);
 	}
 
-	static __int64 JACK_API unknown_list_do_something_uppercase(__int64 a1, __int64 a2, int a3, int a4)
+	static __int64 JACK_API unknown_list_do_something_uppercase(__int64 a1, __int64 a2, __int64 a3, __int64 a4)
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
@@ -1273,7 +1273,7 @@ public:
 		return jack_sdk_api->unknown_do_something_float(a1, a2, a3);
 	}
 
-	static void* JACK_API unknown_do_something_hashtable(const char* a1, const char* a2, int a3)
+	static void* JACK_API unknown_do_something_hashtable(const char* a1, const char* a2, __int64 a3)
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
@@ -1362,7 +1362,7 @@ public:
 		return jack_sdk_api->alloc_current_widget_2(a1,a2,a3);
 	}
 
-	static unsigned long* JACK_API qapp_process_event(__int64 a1, const char* a2, int a3, int a4, int a5, int a6, int a7, char a8, void* a9)
+	static unsigned long* JACK_API qapp_process_event(__int64 a1, const char* a2, __int64 a3, __int64 a4, __int64 a5, __int64 a6, __int64 a7, char a8, void* a9)
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
@@ -1389,7 +1389,7 @@ public:
 		return jack_sdk_api->unknown_do_something_color(a1, a2);
 	}
 
-	static void JACK_API unknown_free_something2(__int64 a1, unsigned int a2)
+	static void JACK_API unknown_free_something2(__int64 a1, unsigned __int64 a2)
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
@@ -1398,7 +1398,7 @@ public:
 		return jack_sdk_api->unknown_free_something2(a1, a2);
 	}
 
-	static void JACK_API unknown_recreate_something(__int64 a1, unsigned int a2, char* a3, unsigned int a4, int* a5)
+	static void JACK_API unknown_recreate_something(__int64 a1, unsigned __int64 a2, char* a3, unsigned __int64 a4, int* a5)
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
@@ -1416,7 +1416,7 @@ public:
 		return jack_sdk_api->unknown_get_something(a1);
 	}
 
-	static __int64 JACK_API unknown_create_something(__int64 a1, int a2)
+	static __int64 JACK_API unknown_create_something(__int64 a1, __int64 a2)
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
@@ -1425,7 +1425,7 @@ public:
 		return jack_sdk_api->unknown_create_something(a1, a2);
 	}
 
-	static __int64 JACK_API unknown_create_something2(__int64 a1, int a2, char* a3, int a4, unsigned long* a5, unsigned long* a6, unsigned char* a7)
+	static __int64 JACK_API unknown_create_something2(__int64 a1, __int64 a2, char* a3, __int64 a4, unsigned long* a5, unsigned long* a6, unsigned char* a7)
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
@@ -1542,7 +1542,7 @@ public:
 		return jack_sdk_api->unknown_fill_something5(a1);
 	}
 
-	static void JACK_API unknown_show_something2(__int64 a1, int a2)
+	static void JACK_API unknown_show_something2(__int64 a1, __int64 a2)
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
@@ -1650,7 +1650,7 @@ public:
 		return jack_sdk_api->unknown_fill_something19(a1);
 	}
 
-	static void JACK_API unknown_show_something3(__int64 a1, int a2)
+	static void JACK_API unknown_show_something3(__int64 a1, __int64 a2)
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
@@ -1677,7 +1677,7 @@ public:
 		return jack_sdk_api->unknown_fill_something21(a1);
 	}
 
-	static __int64 JACK_API show_dialog_with_options(const char* title, const char* message, const char* options, int flags)
+	static __int64 JACK_API show_dialog_with_options(const char* title, const char* message, const char* options, __int64 flags)
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
@@ -1704,25 +1704,25 @@ public:
 		return jack_sdk_api->set_dialog_add_title(title);
 	}
 
-	static void JACK_API set_dialog_add_button(const char* name, __int64 add)
+	static void JACK_API set_dialog_add_button(const char* name, void* dispatch_func)
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
-			jack_sdk_api->printLog("Function set_dialog_add_button. Name: %s, Add: %lld", name, add);
+			jack_sdk_api->printLog("Function set_dialog_add_button. Name: %s, dispatch_func: %p", name, dispatch_func);
 		}
-		return jack_sdk_api->set_dialog_add_button(name, add);
+		return jack_sdk_api->set_dialog_add_button(name, dispatch_func);
 	}
 
-	static void JACK_API set_dialog_add_button_2(const char* name, __int64 add)
+	static void JACK_API set_dialog_add_button_2(const char* name, void* dispatch_func)
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
-			jack_sdk_api->printLog("Function set_dialog_add_button_2. Name: %s, Add: %lld", name, add);
+			jack_sdk_api->printLog("Function set_dialog_add_button_2. Name: %s, dispatch_func: %p", name, dispatch_func);
 		}
-		return jack_sdk_api->set_dialog_add_button_2(name, add);
+		return jack_sdk_api->set_dialog_add_button_2(name, dispatch_func);
 	}
 
-	static void JACK_API set_progress_bar(int val, int max)
+	static void JACK_API set_progress_bar(__int64 val, __int64 max)
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
@@ -1731,89 +1731,89 @@ public:
 		return jack_sdk_api->set_progress_bar(val, max);
 	}
 
-	static void JACK_API add_dialog_editable_text(__int64 a1, const char* row, const char* direct_text, int flags)
+	static void JACK_API add_dialog_editable_text(const char* category, const char* row, const char* direct_text, __int64 flags)
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
-			jack_sdk_api->printLog("Function add_dialog_editable_text. A1: %lld, Row: %s, Direct Text: %s, Flags: %d", a1, row, direct_text, flags);
+			jack_sdk_api->printLog("Function add_dialog_editable_text. Category: %s, Row: %s, Direct Text: %s, Flags: %d", category, row, direct_text, flags);
 		}
-		return jack_sdk_api->add_dialog_editable_text(a1, row, direct_text, flags);
+		return jack_sdk_api->add_dialog_editable_text(category, row, direct_text, flags);
 	}
 
-	static void JACK_API add_dialog_radiobox_text(__int64 a1, const char* tile, bool checked, int flags)
+	static void JACK_API add_dialog_radiobox_text(const char* category, const char* tile, bool checked, __int64 flags)
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
-			jack_sdk_api->printLog("Function add_dialog_radiobox_text. A1: %lld, Title: %s, Checked: %d, Flags: %d", a1, tile, checked, flags);
+			jack_sdk_api->printLog("Function add_dialog_radiobox_text. Category: %s, Title: %s, Checked: %d, Flags: %d", category, tile, checked, flags);
 		}
-		return jack_sdk_api->add_dialog_radiobox_text(a1, tile, checked, flags);
+		return jack_sdk_api->add_dialog_radiobox_text(category, tile, checked, flags);
 	}
 
-	static void JACK_API add_dialog_checkbox_text(__int64 a1, const char* tile, bool checked, int flags)
+	static void JACK_API add_dialog_checkbox_text(const char* category, const char* tile, bool checked, __int64 flags)
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
-			jack_sdk_api->printLog("Function add_dialog_checkbox_text. A1: %lld, Title: %s, Checked: %d, Flags: %d", a1, tile, checked, flags);
+			jack_sdk_api->printLog("Function add_dialog_checkbox_text. Category: %s, Title: %s, Checked: %d, Flags: %d", category, tile, checked, flags);
 		}
-		return jack_sdk_api->add_dialog_checkbox_text(a1, tile, checked, flags);
+		return jack_sdk_api->add_dialog_checkbox_text(category, tile, checked, flags);
 	}
 
-	static void JACK_API add_dialog_spinbox_text_int(__int64 a1, const char* text, int value, int min, int max, int step, int flags)
+	static void JACK_API add_dialog_spinbox_text_int(const char* category, const char* text, __int64 value, __int64 min, __int64 max, __int64 step, __int64 flags)
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
-			jack_sdk_api->printLog("Function add_dialog_spinbox_text_int. A1: %lld, Text: %s, Value: %d, Min: %d, Max: %d, Step: %d, Flags: %d", a1, text, value, min, max, step, flags);
+			jack_sdk_api->printLog("Function add_dialog_spinbox_text_int. Category: %s, Text: %s, Value: %d, Min: %d, Max: %d, Step: %d, Flags: %d", category, text, value, min, max, step, flags);
 		}
 
-		return jack_sdk_api->add_dialog_spinbox_text_int(a1, text, value, min, max, step, flags);
+		return jack_sdk_api->add_dialog_spinbox_text_int(category, text, value, min, max, step, flags);
 	}
 
-	static void JACK_API add_dialog_spinbox_text_float(__int64 a1, const char* text, float value, float min, float max, float step, int flags)
+	static void JACK_API add_dialog_spinbox_text_float(const char* category, const char* text, float value, float min, float max, float step, __int64 flags)
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
-			jack_sdk_api->printLog("Function add_dialog_spinbox_text_float. A1: %lld, Text: %s, Value: %f, Min: %f, Max: %f, Step: %f, Flags: %d", a1, text, value, min, max, step, flags);
+			jack_sdk_api->printLog("Function add_dialog_spinbox_text_float. Category: %s, Text: %s, Value: %f, Min: %f, Max: %f, Step: %f, Flags: %d", category, text, value, min, max, step, flags);
 		}
-		return jack_sdk_api->add_dialog_spinbox_text_float(a1, text, value, min, max, step, flags);
+		return jack_sdk_api->add_dialog_spinbox_text_float(category, text, value, min, max, step, flags);
 	}
 
-	static void JACK_API add_dialog_fileedit_text(__int64 a1, const char* a2, const char* a3, const char* a4, int a5)
+	static void JACK_API add_dialog_fileedit_text(const char* category, const char* a2, const char* a3, const char* a4, __int64 a5)
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
-			jack_sdk_api->printLog("Function add_dialog_fileedit_text. A1: %lld, A2: %s, A3: %s, A4: %s, A5: %d", a1, a2, a3, a4, a5);
+			jack_sdk_api->printLog("Function add_dialog_fileedit_text. Category: %s, A2: %s, A3: %s, A4: %s, A5: %d", category, a2, a3, a4, a5);
 		}
-		return jack_sdk_api->add_dialog_fileedit_text(a1, a2, a3, a4, a5);
+		return jack_sdk_api->add_dialog_fileedit_text(category, a2, a3, a4, a5);
 	}
 
-	static void JACK_API add_dialog_filelist_text(__int64 a1, const char* a2, const char* a3, const char* a4, int a5)
+	static void JACK_API add_dialog_filelist_text(const char* category, const char* a2, const char* a3, const char* a4, __int64 a5)
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
-			jack_sdk_api->printLog("Function add_dialog_filelist_text. A1: %lld, A2: %s, A3: %s, A4: %s, A5: %d", a1, a2, a3, a4, a5);
+			jack_sdk_api->printLog("Function add_dialog_filelist_text. Category: %s, A2: %s, A3: %s, A4: %s, A5: %d", category, a2, a3, a4, a5);
 		}
-		return jack_sdk_api->add_dialog_filelist_text(a1, a2, a3, a4, a5);
+		return jack_sdk_api->add_dialog_filelist_text(category, a2, a3, a4, a5);
 	}
 
-	static void JACK_API add_dialog_combobox_text(__int64 a1, const char* a2, int a3, const char* a4, int a5)
+	static void JACK_API add_dialog_combobox_text(const char* category, const char* a2, __int64 a3, const char* a4, __int64 a5)
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
-			jack_sdk_api->printLog("Function add_dialog_combobox_text. A1: %lld, A2: %s, A3: %d, A4: %s, A5: %d", a1, a2, a3, a4, a5);
+			jack_sdk_api->printLog("Function add_dialog_combobox_text. Category: %s, A2: %s, A3: %d, A4: %s, A5: %d", category, a2, a3, a4, a5);
 		}
-		return jack_sdk_api->add_dialog_combobox_text(a1, a2, a3, a4, a5);
+		return jack_sdk_api->add_dialog_combobox_text(category, a2, a3, a4, a5);
 	}
 
-	static void JACK_API add_dialog_directory_text(__int64 a1, const char* a2, const char* a3, int a4)
+	static void JACK_API add_dialog_directory_text(const char* category, const char* a2, const char* a3, __int64 a4)
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
-			jack_sdk_api->printLog("Function add_dialog_directory_text. A1: %lld, A2: %s, A3: %s, A4: %d", a1, a2, a3, a4);
+			jack_sdk_api->printLog("Function add_dialog_directory_text. Category: %s, A2: %s, A3: %s, A4: %d", category, a2, a3, a4);
 		}
-		return jack_sdk_api->add_dialog_directory_text(a1, a2, a3, a4);
+		return jack_sdk_api->add_dialog_directory_text(category, a2, a3, a4);
 	}
 
-	static void JACK_API add_dialog_query_arg_str(const char* text, char* out, int out_size)
+	static void JACK_API add_dialog_query_arg_str(const char* text, char* out, __int64 out_size)
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
@@ -2213,12 +2213,12 @@ __int64 __fastcall vpUnloadModel(__int64 id, unsigned char* data)
 	jack_sdk_api->printWarning("Try to unload model %i type. Data: %p", id, data);
 	return 0;
 }
-__int64 __fastcall vpRenderModel(__int64 id, unsigned int a2, __int64 a3, __int64 a4) //verts, etc?
+__int64 __fastcall vpRenderModel(__int64 id, unsigned __int64 a2, __int64 a3, __int64 a4) //verts, etc?
 {
 	//jack_sdk_api->printWarning("Try to render model %i type. Data: %p", id, data);
 	return 0;
 }
-__int64 __fastcall vpGetModelBounds(__int64 id, vec3* mins, vec3* maxs, unsigned int a4, __int64 a5)
+__int64 __fastcall vpGetModelBounds(__int64 id, vec3* mins, vec3* maxs, unsigned __int64 a4, __int64 a5)
 {
 	//jack_sdk_api->printWarning("Try to get model %i type mins maxs. Data: %p", id, data);
 	return 0;
@@ -2232,7 +2232,7 @@ __int64 __fastcall vpSetPalette(__int64 a1)
 {
 	return 0;
 }
-__int64 __fastcall vpLoadSky(__int64 id, __int64 a2, unsigned int a3, const char* name, unsigned int side)
+__int64 __fastcall vpLoadSky(__int64 id, __int64 a2, unsigned __int64 a3, const char* name, unsigned __int64 side)
 {
 	jack_sdk_api->printWarning("Try to load sky %i type. Name: %s. Side: %u", id, name, side);
 	return 0;
@@ -2251,7 +2251,7 @@ __int64 __fastcall vpLoadPackage(__int64 id, const char* path)
 	jack_sdk_api->printWarning("Try to load package %i type. Path: %s", id, path);
 	return 0;
 }
-__int64 __fastcall vpLoadTexture(__int64 id, const char* pathname, __int64 a3, unsigned int a4)
+__int64 __fastcall vpLoadTexture(__int64 id, const char* pathname, __int64 a3, unsigned __int64 a4)
 {
 	jack_sdk_api->printWarning("Try to load texture %i type. Path: %s", id, pathname);
 	return 0;
