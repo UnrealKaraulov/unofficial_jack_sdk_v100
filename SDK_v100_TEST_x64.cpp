@@ -98,22 +98,22 @@ struct JackAPI {
 	__int64 (JACK_API* unknown_do_something)(void* some_struct, char** outstr, char fill_char, __int64 need_fill_or_not);
 	__int64 (JACK_API* unknown_list_create_some_object)(void* some_struct, const char* name, int* iarray, __int64 flags);
 	__int64 (JACK_API* unknown_list_do_something)(__int64 arg1, __int16 flags, double arg3, double arg4);
-	__int64 (JACK_API* unknown_list_swap_something2)(__int64 arg1, unsigned char* arg_array);
+	__int64 (JACK_API* unknown_get_entity_or_something)(unsigned char* arg1, unsigned char* arg2);
 	__int64 (JACK_API* unknown_list_swap_something)(__int64 arg1, unsigned long* arg_array);
 	void (JACK_API* unknown_list_add_something)(__int64 arg1, __int64 arg2, unsigned __int64 arg3);
 	void (JACK_API* unknown_list_add_something2)(__int64 arg1, __int64 arg2, unsigned __int64 arg3);
-	__int64 (JACK_API* unknown_list_get_at)(void* arg1, __int64 offset);
+	__int64 (JACK_API* unknown_list_get_at_ent)(void* arg1, __int64 offset);
 	__int64 (JACK_API* unknown_list_get_size)(void* arg1);
 	__int64 (JACK_API* unknown_list_get_by_name)(void* arg1, const char* name, __int64 offset);
 	__int64 (JACK_API* unknown_list_get_somehing)(void* arg1, __int64 offset);
 	__int64 (JACK_API* unknown_list_get_somehing2)(void* arg1, __int64 offset);
 	__int64 (JACK_API* unknown_list_add_object)(__int64 arg1, __int64 arg2);
 	__int64 (JACK_API* unknown_list_do_something2)(__int64 arg1, __int64 arg2);
-	void (JACK_API* unknown_get_color_or_something)(__int64 a1, unsigned char* a2);
+	void (JACK_API* unknown_get_brush_data)(unsigned char* a1, unsigned char* a2);
 	void (JACK_API* unknown_something_color)(__int64 a1, unsigned long* a2);
 	void (JACK_API* unknown_list_add_something3)(__int64 arg1, __int64 arg2, unsigned __int64 arg3);
 	void (JACK_API* unknown_list_add_something4)(__int64 arg1, __int64 arg2, unsigned __int64 arg3);
-	__int64 (JACK_API* unknown_list_get_at2)(void* arg1, __int64 offset);
+	__int64 (JACK_API* unknown_list_get_at_brush)(void* arg1, __int64 offset);
 	__int64 (JACK_API* unknown_list_get_size2)(void* arg1);
 	__int64 (JACK_API* unknown_list_do_something3)(__int64 a1, __int64 a2, __int64 a3, __int64 a4);
 	__int64(JACK_API* unknown_list_do_something4)(__int64 a1, __int64 a2);
@@ -145,13 +145,13 @@ struct JackAPI {
 	void* (JACK_API* unknown_do_something_hashtable)(const char* a1, const char* a2, __int64 a3);
 	void* (JACK_API* unknown_find_hastable)(const char* a1);
 	void (JACK_API* unknown_mark_something_hashable)(__int64 a1);
-	void (JACK_API* unknown_alloc_something)(__int64 a1, void* a2);
+	void (JACK_API* unknown_alloc_something)(const char* a1, void* a2);
 	void (JACK_API* unknown_free_something)(void* Block);
-	__int64 (JACK_API* unknown_do_something_qt_witdget1)(__int64 a1, __int64 a2);
+	__int64 (JACK_API* unknown_do_something_qt_witdget1)(const char* a1, __int64 a2);
 	__int64 (JACK_API* unknown_do_something_hashtable2)(__int64 a1, const char* a2);
 	__int64 (JACK_API* alloc_current_widget_1)();
-	__int64 (JACK_API* unknown_do_something_qt_witdget2)(__int64 a1, __int64 a2);
-	unsigned long* (JACK_API* qapp_process_event)(__int64 a1, const char* a2, __int64 a3, __int64 a4, __int64 a5, __int64 a6, __int64 a7, char a8, void* a9);
+	__int64 (JACK_API* unknown_do_something_qt_witdget2)(const char * a1, __int64 a2);
+	unsigned long* (JACK_API* qapp_process_event)(const char * a1, const char* a2, __int64 a3, __int64 a4, __int64 a5, __int64 a6, __int64 a7, char a8, void* a9);
 	__int64 (JACK_API* alloc_current_widget_2)(__int64 a1, __int64 a2, __int64 a3);
 	void  (JACK_API* widget_clear_textures)(__int64 a1, void* a2);
 	__int64  (JACK_API* unknown_do_something_color)(__int64 a1, char* a2);
@@ -376,7 +376,7 @@ public:
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
-			jack_sdk_api->printLog("Function unknown_fill_memorybuffer. Args: %lld, %d, %d", a1, a2, a3);
+			jack_sdk_api->printLog("Function unknown_fill_memorybuffer. Args: %lld, %lld, %lld", a1, a2, a3);
 		}
 		return jack_sdk_api->unknown_fill_memorybuffer(a1, a2, a3);
 	}
@@ -414,7 +414,7 @@ public:
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
-			jack_sdk_api->printLog("Function unknown_parse_membuf_errors. Some: %d", some);
+			jack_sdk_api->printLog("Function unknown_parse_membuf_errors. Some: %lld", some);
 		}
 		return jack_sdk_api->unknown_parse_membuf_errors(some);
 	}
@@ -423,7 +423,7 @@ public:
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
-			jack_sdk_api->printLog("Function unknown_parse_membuf. Some: %d", some);
+			jack_sdk_api->printLog("Function unknown_parse_membuf. Some: %lld", some);
 		}
 		return jack_sdk_api->unknown_parse_membuf(some);
 	}
@@ -459,7 +459,7 @@ public:
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
-			jack_sdk_api->printLog("Function check_bad_token. Token: %s, Load Type: %d", tok, load_type);
+			jack_sdk_api->printLog("Function check_bad_token. Token: %s, Load Type: %lld", tok, load_type);
 		}
 		return jack_sdk_api->check_bad_token(tok, load_type);
 	}
@@ -468,7 +468,7 @@ public:
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
-			jack_sdk_api->printLog("Function check_float_values_array_array. Values Num: %u, Value Size: %u, A2: %d", values_num, value_size, a2);
+			jack_sdk_api->printLog("Function check_float_values_array_array. Values Num: %u, Value Size: %u, A2: %lld", values_num, value_size, a2);
 		}
 		return jack_sdk_api->check_float_values_array_array(values_num, value_size, a2, values);
 	}
@@ -477,7 +477,7 @@ public:
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY)) 
 		{
-			jack_sdk_api->printLog("Function check_float_values_array. Values Num: %u, A2: %d", values_num, a2);
+			jack_sdk_api->printLog("Function check_float_values_array. Values Num: %u, A2: %lld", values_num, a2);
 		}
 		return jack_sdk_api->check_float_values_array(values_num, a2, values);
 	}
@@ -486,7 +486,7 @@ public:
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
-			jack_sdk_api->printLog("Function check_float_values. Values Num: %d", values_num);
+			jack_sdk_api->printLog("Function check_float_values. Values Num: %lld", values_num);
 		}
 		return jack_sdk_api->check_float_values(values_num, values);
 	}
@@ -513,7 +513,7 @@ public:
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
-			jack_sdk_api->printLog("Function unknown_get_fgd_count_val. Val: %d", val);
+			jack_sdk_api->printLog("Function unknown_get_fgd_count_val. Val: %lld", val);
 		}
 		return jack_sdk_api->unknown_get_fgd_count_val(val);
 	}
@@ -522,7 +522,7 @@ public:
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
-			jack_sdk_api->printLog("Function unknown_set_fgd_count_val. Val: %d", val);
+			jack_sdk_api->printLog("Function unknown_set_fgd_count_val. Val: %lld", val);
 		}
 		return jack_sdk_api->unknown_set_fgd_count_val(val);
 	}
@@ -612,7 +612,7 @@ public:
 	{
 		if (IsKeyPressed(SHOW_DEBUG_SPAM_STUFF_KEY))
 		{
-			jack_sdk_api->printLog("Function gl_set_option. A1: %d", a1);
+			jack_sdk_api->printLog("Function gl_set_option. A1: %lld", a1);
 		}
 		return jack_sdk_api->gl_set_begin_option(a1);
 	}
@@ -792,7 +792,7 @@ public:
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
-			jack_sdk_api->printLog("Function zero_is_small_float_array. Size: %d", size);
+			jack_sdk_api->printLog("Function zero_is_small_float_array. Size: %lld", size);
 		}
 		return jack_sdk_api->zero_is_small_float_array(size, v);
 	}
@@ -855,7 +855,7 @@ public:
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
-			jack_sdk_api->printLog("Function unknown_do_something. Fill Char: %c, Need Fill: %d", fill_char, need_fill_or_not);
+			jack_sdk_api->printLog("Function unknown_do_something. Fill Char: %c, Need Fill: %lld", fill_char, need_fill_or_not);
 		}
 		return jack_sdk_api->unknown_do_something(some_struct, outstr, fill_char, need_fill_or_not);
 	}
@@ -864,7 +864,7 @@ public:
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
-			jack_sdk_api->printLog("Function unknown_list_create_some_object. Name: %s, Flags: %d", name, flags);
+			jack_sdk_api->printLog("Function unknown_list_create_some_object. Name: %s, Flags: %lld", name, flags);
 		}
 		return jack_sdk_api->unknown_list_create_some_object(some_struct, name, iarray, flags);
 	}
@@ -873,18 +873,18 @@ public:
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
-			jack_sdk_api->printLog("Function unknown_list_do_something. Args: %lld, %d, %f, %f", arg1, flags, arg3, arg4);
+			jack_sdk_api->printLog("Function unknown_list_do_something. Args: %lld, %lld, %f, %f", arg1, flags, arg3, arg4);
 		}
 		return jack_sdk_api->unknown_list_do_something(arg1, flags, arg3, arg4);
 	}
 
-	static __int64 JACK_API unknown_list_swap_something2(__int64 arg1, unsigned char* arg_array)
+	static __int64 JACK_API unknown_get_entity_or_something(unsigned char * arg1, unsigned char* arg2)
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
-			jack_sdk_api->printLog("Function unknown_list_swap_something2. Arg1: %lld", arg1);
+			jack_sdk_api->printLog("Function unknown_get_entity_or_something. Arg1: %p Arg2:%p", arg1,arg2);
 		}
-		return jack_sdk_api->unknown_list_swap_something2(arg1, arg_array);
+		return jack_sdk_api->unknown_get_entity_or_something(arg1, arg2);
 	}
 
 	static __int64 JACK_API unknown_list_swap_something(__int64 arg1, unsigned long* arg_array)
@@ -914,13 +914,13 @@ public:
 		return jack_sdk_api->unknown_list_add_something2(arg1, arg2, arg3);
 	}
 
-	static __int64 JACK_API unknown_list_get_at(void* arg1, __int64 offset)
+	static __int64 JACK_API unknown_list_get_at_ent(void* arg1, __int64 offset)
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
-			jack_sdk_api->printLog("Function unknown_list_get_at. Offset: %lld", offset);
+			jack_sdk_api->printLog("Function unknown_list_get_at_ent. Addr: %p Offset: %lld", arg1, offset);
 		}
-		return jack_sdk_api->unknown_list_get_at(arg1, offset);
+		return jack_sdk_api->unknown_list_get_at_ent(arg1, offset);
 	}
 
 	static __int64 JACK_API unknown_list_get_size(void* arg1)
@@ -977,13 +977,13 @@ public:
 		return jack_sdk_api->unknown_list_do_something2(arg1, arg2);
 	}
 
-	static void JACK_API unknown_get_color_or_something(__int64 a1, unsigned char* a2)
+	static void JACK_API unknown_get_brush_data(unsigned char* a1, unsigned char* a2)
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
-			jack_sdk_api->printLog("Function unknown_get_color_or_something. A1: %lld", a1);
+			jack_sdk_api->printLog("Function unknown_get_brush_data. A1: %p. A2: %p", a1);
 		}
-		return jack_sdk_api->unknown_get_color_or_something(a1, a2);
+		return jack_sdk_api->unknown_get_brush_data(a1, a2);
 	}
 
 	static void JACK_API unknown_something_color(__int64 a1, unsigned long* a2)
@@ -1013,13 +1013,13 @@ public:
 		return jack_sdk_api->unknown_list_add_something4(arg1, arg2, arg3);
 	}
 
-	static __int64 JACK_API unknown_list_get_at2(void* arg1, __int64 offset)
+	static __int64 JACK_API unknown_list_get_at_brush(void* arg1, __int64 offset)
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
-			jack_sdk_api->printLog("Function unknown_list_get_at2. Offset: %lld", offset);
+			jack_sdk_api->printLog("Function unknown_list_get_at_brush. Addr: %p Offset: %lld", arg1, offset);
 		}
-		return jack_sdk_api->unknown_list_get_at2(arg1, offset);
+		return jack_sdk_api->unknown_list_get_at_brush(arg1, offset);
 	}
 
 	static __int64 JACK_API unknown_list_get_size2(void* arg1)
@@ -1035,7 +1035,7 @@ public:
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
-			jack_sdk_api->printLog("Function unknown_list_do_something3. Args: %lld, %lld, %lld, %d", a1, a2, a3, a4);
+			jack_sdk_api->printLog("Function unknown_list_do_something3. Args: %lld, %lld, %lld, %lld", a1, a2, a3, a4);
 		}
 		return jack_sdk_api->unknown_list_do_something3(a1, a2, a3, a4);
 	}
@@ -1053,7 +1053,7 @@ public:
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
-			jack_sdk_api->printLog("Function unknown_list_do_something_uppercase. Args: %lld, %lld, %d, %d", a1, a2, a3, a4);
+			jack_sdk_api->printLog("Function unknown_list_do_something_uppercase. Args: %lld, %lld, %lld, %lld", a1, a2, a3, a4);
 		}
 		return jack_sdk_api->unknown_list_do_something_uppercase(a1, a2, a3, a4);
 	}
@@ -1279,7 +1279,7 @@ public:
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
-			jack_sdk_api->printLog("Function unknown_do_something_hashtable. A1: %s, A2: %s, A3: %d", a1, a2, a3);
+			jack_sdk_api->printLog("Function unknown_do_something_hashtable. A1: %s, A2: %s, A3: %lld", a1, a2, a3);
 		}
 		return jack_sdk_api->unknown_do_something_hashtable(a1, a2, a3);
 	}
@@ -1302,11 +1302,11 @@ public:
 		return jack_sdk_api->unknown_mark_something_hashable(a1);
 	}
 
-	static void JACK_API unknown_alloc_something(__int64 a1, void* a2)
+	static void JACK_API unknown_alloc_something(const char * a1, void* a2)
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
-			jack_sdk_api->printLog("Function unknown_alloc_something. A1: %lld", a1);
+			jack_sdk_api->printLog("Function unknown_alloc_something. Name: %s addr: %p", a1, a2);
 		}
 		return jack_sdk_api->unknown_alloc_something(a1, a2);
 	}
@@ -1319,11 +1319,11 @@ public:
 		}
 		return jack_sdk_api->unknown_free_something(Block);
 	}
-	static __int64 JACK_API unknown_do_something_qt_witdget1(__int64 a1, __int64 a2)
+	static __int64 JACK_API unknown_do_something_qt_witdget1(const char * a1, __int64 a2)
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
-			jack_sdk_api->printLog("Function unknown_do_something_qt_witdget1. A1: %lld, A2: %lld", a1, a2);
+			jack_sdk_api->printLog("Function unknown_do_something_qt_witdget1. Name: %s, A2: %lld", a1, a2);
 		}
 		return jack_sdk_api->unknown_do_something_qt_witdget1(a1, a2);
 	}
@@ -1346,11 +1346,11 @@ public:
 		return jack_sdk_api->alloc_current_widget_1();
 	}
 
-	static __int64 JACK_API unknown_do_something_qt_witdget2(__int64 a1, __int64 a2)
+	static __int64 JACK_API unknown_do_something_qt_witdget2(const char * a1, __int64 a2)
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
-			jack_sdk_api->printLog("Function unknown_do_something_qt_witdget2. A1: %lld, A2: %lld", a1, a2);
+			jack_sdk_api->printLog("Function unknown_do_something_qt_witdget2. Name: %s, A2: %lld", a1, a2);
 		}
 		return jack_sdk_api->unknown_do_something_qt_witdget2(a1, a2);
 	}
@@ -1364,11 +1364,11 @@ public:
 		return jack_sdk_api->alloc_current_widget_2(a1,a2,a3);
 	}
 
-	static unsigned long* JACK_API qapp_process_event(__int64 a1, const char* a2, __int64 a3, __int64 a4, __int64 a5, __int64 a6, __int64 a7, char a8, void* a9)
+	static unsigned long* JACK_API qapp_process_event(const char * a1, const char* a2, __int64 a3, __int64 a4, __int64 a5, __int64 a6, __int64 a7, char a8, void* a9)
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
-			jack_sdk_api->printLog("Function qapp_process_event. A1: %lld, A2: %s, A3: %d, A4: %d, A5: %d, A6: %d, A7: %d, A8: %c", a1, a2, a3, a4, a5, a6, a7, a8);
+			jack_sdk_api->printLog("Function qapp_process_event. Name: %s, A2: %s, A3: %lld, A4: %lld, A5: %lld, A6: %lld, A7: %lld, A8: %c", a1, a2, a3, a4, a5, a6, a7, a8);
 		}
 		return jack_sdk_api->qapp_process_event(a1, a2, a3, a4, a5, a6, a7, a8, a9);
 	}
@@ -1422,7 +1422,7 @@ public:
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
-			jack_sdk_api->printLog("Function unknown_create_something. A1: %lld, A2: %d", a1, a2);
+			jack_sdk_api->printLog("Function unknown_create_something. A1: %lld, A2: %lld", a1, a2);
 		}
 		return jack_sdk_api->unknown_create_something(a1, a2);
 	}
@@ -1431,7 +1431,7 @@ public:
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
-			jack_sdk_api->printLog("Function unknown_create_something2. A1: %lld, A2: %llu, A3: %lld, A4: %d, A5: %p, A6: %p, A7: %p", a1, a2, a3, a4, a5, a6, a7);
+			jack_sdk_api->printLog("Function unknown_create_something2. A1: %lld, A2: %llu, A3: %lld, A4: %lld, A5: %p, A6: %p, A7: %p", a1, a2, a3, a4, a5, a6, a7);
 		}
 		return jack_sdk_api->unknown_create_something2(a1, a2, a3, a4, a5, a6, a7);
 	}
@@ -1548,7 +1548,7 @@ public:
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
-			jack_sdk_api->printLog("Function unknown_show_something2. A1: %lld, A2: %d", a1, a2);
+			jack_sdk_api->printLog("Function unknown_show_something2. A1: %lld, A2: %lld", a1, a2);
 		}
 		return jack_sdk_api->unknown_show_something2(a1, a2);
 	}
@@ -1656,7 +1656,7 @@ public:
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
-			jack_sdk_api->printLog("Function unknown_show_something3. A1: %lld, A2: %d", a1, a2);
+			jack_sdk_api->printLog("Function unknown_show_something3. A1: %lld, A2: %lld", a1, a2);
 		}
 		return jack_sdk_api->unknown_show_something3(a1, a2);
 	}
@@ -1683,7 +1683,7 @@ public:
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
-			jack_sdk_api->printLog("Function show_dialog_with_options. Title: %s, Message: %s, Options: %s, Flags: %d", title, message, options, flags);
+			jack_sdk_api->printLog("Function show_dialog_with_options. Title: %s, Message: %s, Options: %s, Flags: %lld", title, message, options, flags);
 		}
 		return jack_sdk_api->show_dialog_with_options(title, message, options, flags);
 	}
@@ -1692,7 +1692,7 @@ public:
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
-			jack_sdk_api->printLog("Function show_dialog. Title: %s, Message: %s, Flags: %d", title, message, flags);
+			jack_sdk_api->printLog("Function show_dialog. Title: %s, Message: %s, Flags: %lld", title, message, flags);
 		}
 		return jack_sdk_api->show_dialog(title, message, flags);
 	}
@@ -1728,7 +1728,7 @@ public:
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
-			jack_sdk_api->printLog("Function set_progress_bar. Value: %d, Max: %d", val, max);
+			jack_sdk_api->printLog("Function set_progress_bar. Value: %lld, Max: %lld", val, max);
 		}
 		return jack_sdk_api->set_progress_bar(val, max);
 	}
@@ -1737,7 +1737,7 @@ public:
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
-			jack_sdk_api->printLog("Function add_dialog_editable_text. Category: %s, Row: %s, Direct Text: %s, Flags: %d", category, row, direct_text, flags);
+			jack_sdk_api->printLog("Function add_dialog_editable_text. Category: %s, Row: %s, Direct Text: %s, Flags: %lld", category, row, direct_text, flags);
 		}
 		return jack_sdk_api->add_dialog_editable_text(category, row, direct_text, flags);
 	}
@@ -1746,7 +1746,7 @@ public:
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
-			jack_sdk_api->printLog("Function add_dialog_radiobox_text. Category: %s, Title: %s, Checked: %d, Flags: %d", category, tile, checked, flags);
+			jack_sdk_api->printLog("Function add_dialog_radiobox_text. Category: %s, Title: %s, Checked: %lld, Flags: %lld", category, tile, checked, flags);
 		}
 		return jack_sdk_api->add_dialog_radiobox_text(category, tile, checked, flags);
 	}
@@ -1755,7 +1755,7 @@ public:
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
-			jack_sdk_api->printLog("Function add_dialog_checkbox_text. Category: %s, Title: %s, Checked: %d, Flags: %d", category, tile, checked, flags);
+			jack_sdk_api->printLog("Function add_dialog_checkbox_text. Category: %s, Title: %s, Checked: %lld, Flags: %lld", category, tile, checked, flags);
 		}
 		return jack_sdk_api->add_dialog_checkbox_text(category, tile, checked, flags);
 	}
@@ -1764,7 +1764,7 @@ public:
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
-			jack_sdk_api->printLog("Function add_dialog_spinbox_text_int. Category: %s, Text: %s, Value: %d, Min: %d, Max: %d, Step: %d, Flags: %d", category, text, value, min, max, step, flags);
+			jack_sdk_api->printLog("Function add_dialog_spinbox_text_int. Category: %s, Text: %s, Value: %lld, Min: %lld, Max: %lld, Step: %lld, Flags: %lld", category, text, value, min, max, step, flags);
 		}
 
 		return jack_sdk_api->add_dialog_spinbox_text_int(category, text, value, min, max, step, flags);
@@ -1774,7 +1774,7 @@ public:
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
-			jack_sdk_api->printLog("Function add_dialog_spinbox_text_float. Category: %s, Text: %s, Value: %f, Min: %f, Max: %f, Step: %f, Flags: %d", category, text, value, min, max, step, flags);
+			jack_sdk_api->printLog("Function add_dialog_spinbox_text_float. Category: %s, Text: %s, Value: %f, Min: %f, Max: %f, Step: %f, Flags: %lld", category, text, value, min, max, step, flags);
 		}
 		return jack_sdk_api->add_dialog_spinbox_text_float(category, text, value, min, max, step, flags);
 	}
@@ -1783,7 +1783,7 @@ public:
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
-			jack_sdk_api->printLog("Function add_dialog_fileedit_text. Category: %s, A2: %s, A3: %s, A4: %s, A5: %d", category, a2, a3, a4, a5);
+			jack_sdk_api->printLog("Function add_dialog_fileedit_text. Category: %s, A2: %s, A3: %s, A4: %s, A5: %lld", category, a2, a3, a4, a5);
 		}
 		return jack_sdk_api->add_dialog_fileedit_text(category, a2, a3, a4, a5);
 	}
@@ -1792,7 +1792,7 @@ public:
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
-			jack_sdk_api->printLog("Function add_dialog_filelist_text. Category: %s, A2: %s, A3: %s, A4: %s, A5: %d", category, a2, a3, a4, a5);
+			jack_sdk_api->printLog("Function add_dialog_filelist_text. Category: %s, A2: %s, A3: %s, A4: %s, A5: %lld", category, a2, a3, a4, a5);
 		}
 		return jack_sdk_api->add_dialog_filelist_text(category, a2, a3, a4, a5);
 	}
@@ -1801,7 +1801,7 @@ public:
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
-			jack_sdk_api->printLog("Function add_dialog_combobox_text. Category: %s, A2: %s, A3: %d, A4: %s, A5: %d", category, a2, a3, a4, a5);
+			jack_sdk_api->printLog("Function add_dialog_combobox_text. Category: %s, A2: %s, A3: %lld, A4: %s, A5: %lld", category, a2, a3, a4, a5);
 		}
 		return jack_sdk_api->add_dialog_combobox_text(category, a2, a3, a4, a5);
 	}
@@ -1810,7 +1810,7 @@ public:
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
-			jack_sdk_api->printLog("Function add_dialog_directory_text. Category: %s, A2: %s, A3: %s, A4: %d", category, a2, a3, a4);
+			jack_sdk_api->printLog("Function add_dialog_directory_text. Category: %s, A2: %s, A3: %s, A4: %lld", category, a2, a3, a4);
 		}
 		return jack_sdk_api->add_dialog_directory_text(category, a2, a3, a4);
 	}
@@ -1819,7 +1819,7 @@ public:
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
-			jack_sdk_api->printLog("Function add_dialog_query_arg_str. Text: %s, Out Size: %d", text, out_size);
+			jack_sdk_api->printLog("Function add_dialog_query_arg_str. Text: %s, Out Size: %lld", text, out_size);
 		}
 		return jack_sdk_api->add_dialog_query_arg_str(text, out, out_size);
 	}
@@ -2069,22 +2069,22 @@ __int64 __fastcall vpMain(JackAPI* vTable, __int64 sdk_version)
 	vTable->unknown_do_something = *HookJackAPI::unknown_do_something;
 	vTable->unknown_list_create_some_object = *HookJackAPI::unknown_list_create_some_object;
 	vTable->unknown_list_do_something = *HookJackAPI::unknown_list_do_something;
-	vTable->unknown_list_swap_something2 = *HookJackAPI::unknown_list_swap_something2;
+	vTable->unknown_get_entity_or_something = *HookJackAPI::unknown_get_entity_or_something;
 	vTable->unknown_list_swap_something = *HookJackAPI::unknown_list_swap_something;
 	vTable->unknown_list_add_something = *HookJackAPI::unknown_list_add_something;
 	vTable->unknown_list_add_something2 = *HookJackAPI::unknown_list_add_something2;
-	vTable->unknown_list_get_at = *HookJackAPI::unknown_list_get_at;
+	vTable->unknown_list_get_at_ent = *HookJackAPI::unknown_list_get_at_ent;
 	vTable->unknown_list_get_size = *HookJackAPI::unknown_list_get_size;
 	vTable->unknown_list_get_by_name = *HookJackAPI::unknown_list_get_by_name;
 	vTable->unknown_list_get_somehing = *HookJackAPI::unknown_list_get_somehing;
 	vTable->unknown_list_get_somehing2 = *HookJackAPI::unknown_list_get_somehing2;
 	vTable->unknown_list_add_object = *HookJackAPI::unknown_list_add_object;
 	vTable->unknown_list_do_something2 = *HookJackAPI::unknown_list_do_something2;
-	vTable->unknown_get_color_or_something = *HookJackAPI::unknown_get_color_or_something;
+	vTable->unknown_get_brush_data = *HookJackAPI::unknown_get_brush_data;
 	vTable->unknown_something_color = *HookJackAPI::unknown_something_color;
 	vTable->unknown_list_add_something3 = *HookJackAPI::unknown_list_add_something3;
 	vTable->unknown_list_add_something4 = *HookJackAPI::unknown_list_add_something4;
-	vTable->unknown_list_get_at2 = *HookJackAPI::unknown_list_get_at2;
+	vTable->unknown_list_get_at_brush = *HookJackAPI::unknown_list_get_at_brush;
 	vTable->unknown_list_get_size2 = *HookJackAPI::unknown_list_get_size2;
 	vTable->unknown_list_do_something3 = *HookJackAPI::unknown_list_do_something3;
 	vTable->unknown_list_do_something4 = *HookJackAPI::unknown_list_do_something4;
