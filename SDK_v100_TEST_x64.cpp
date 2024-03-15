@@ -146,10 +146,10 @@ struct JackAPI {
 	__int64 (JACK_API* unknown_do_something_hashtable2)(__int64 a1, const char* a2);
 	__int64 (JACK_API* alloc_current_widget_1)();
 	__int64 (JACK_API* unknown_do_something_qt_witdget2)(__int64 a1, __int64 a2);
-	__int64 (JACK_API* alloc_current_widget_2)();
 	unsigned long* (JACK_API* qapp_process_event)(__int64 a1, const char* a2, int a3, int a4, int a5, int a6, int a7, char a8, void* a9);
+	__int64 (JACK_API* alloc_current_widget_2)(__int64 a1, __int64 a2, __int64 a3);
 	void  (JACK_API* widget_clear_textures)(__int64 a1, void* a2);
-	__int64  (JACK_API* unknown_do_something_title)(__int64 a1, char* a2);
+	__int64  (JACK_API* unknown_do_something_color)(__int64 a1, char* a2);
 	void (JACK_API* unknown_free_something2)(__int64 a1, unsigned int a2);
 	void (JACK_API* unknown_recreate_something)(__int64 a1, unsigned int a2, char* a3, unsigned int a4, int* a5);
 	__int64 (JACK_API* unknown_get_something)(__int64 a1);
@@ -993,10 +993,10 @@ public:
 		return jack_sdk_api->unknown_do_something_qt_witdget2(a1, a2);
 	}
 
-	static __int64 JACK_API alloc_current_widget_2()
+	static __int64 JACK_API alloc_current_widget_2(__int64 a1, __int64 a2, __int64 a3)
 	{
 		jack_sdk_api->printLog("Function alloc_current_widget_2");
-		return jack_sdk_api->alloc_current_widget_2();
+		return jack_sdk_api->alloc_current_widget_2(a1,a2,a3);
 	}
 
 	static unsigned long* JACK_API qapp_process_event(__int64 a1, const char* a2, int a3, int a4, int a5, int a6, int a7, char a8, void* a9)
@@ -1011,10 +1011,10 @@ public:
 		return jack_sdk_api->widget_clear_textures(a1, a2);
 	}
 
-	static __int64 JACK_API unknown_do_something_title(__int64 a1, char* a2)
+	static __int64 JACK_API unknown_do_something_color(__int64 a1, char* a2)
 	{
-		jack_sdk_api->printLog("Function unknown_do_something_title. A1: %lld, A2: %s", a1, a2);
-		return jack_sdk_api->unknown_do_something_title(a1, a2);
+		jack_sdk_api->printLog("Function unknown_do_something_color. A1: %lld, A2: %s", a1, a2);
+		return jack_sdk_api->unknown_do_something_color(a1, a2);
 	}
 
 	static void JACK_API unknown_free_something2(__int64 a1, unsigned int a2)
@@ -1587,10 +1587,12 @@ __int64 __fastcall vpMain(JackAPI* vTable, __int64 sdk_version)
 	vTable->unknown_do_something_hashtable2 = *HookJackAPI::unknown_do_something_hashtable2;
 	vTable->alloc_current_widget_1 = *HookJackAPI::alloc_current_widget_1;
 	vTable->unknown_do_something_qt_witdget2 = *HookJackAPI::unknown_do_something_qt_witdget2;
-	vTable->alloc_current_widget_2 = *HookJackAPI::alloc_current_widget_2;
+
 	vTable->qapp_process_event = *HookJackAPI::qapp_process_event;
+	vTable->alloc_current_widget_2 = *HookJackAPI::alloc_current_widget_2;
+
 	vTable->widget_clear_textures = *HookJackAPI::widget_clear_textures;
-	vTable->unknown_do_something_title = *HookJackAPI::unknown_do_something_title;
+	vTable->unknown_do_something_color = *HookJackAPI::unknown_do_something_color;
 	vTable->unknown_free_something2 = *HookJackAPI::unknown_free_something2;
 	vTable->unknown_recreate_something = *HookJackAPI::unknown_recreate_something;
 	vTable->unknown_get_something = *HookJackAPI::unknown_get_something;
