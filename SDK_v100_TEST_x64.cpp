@@ -691,7 +691,7 @@ public:
 
 	static void JACK_API unknown_gl_setstate(__int64 a1, __int64 a2)
 	{
-		if (!IsKeyPressed(SKIP_DEBUG_KEY))
+		if (IsKeyPressed(SHOW_DEBUG_SPAM_STUFF_KEY))
 		{
 			jack_sdk_api->printLog("Function unknown_gl_setstate. Args: %lld, %lld", a1, a2);
 		}
@@ -846,7 +846,7 @@ public:
 	{
 		if (!IsKeyPressed(SKIP_DEBUG_KEY))
 		{
-			jack_sdk_api->printLog("Function unknown_qt_func1.");
+			jack_sdk_api->printLog("Function unknown_qt_func1 %p %p %p %p.",qobj1,q_unused, qobj2,qevnt);
 		}
 		return jack_sdk_api->unknown_qt_func1(qobj1, q_unused, qobj2, qevnt);
 	}
